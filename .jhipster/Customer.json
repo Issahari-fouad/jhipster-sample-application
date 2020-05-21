@@ -1,0 +1,46 @@
+{
+  "name": "Customer",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "address"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "wishList",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "wishList"
+    }
+  ],
+  "changelogDate": "20200521084101",
+  "entityTableName": "customer",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
