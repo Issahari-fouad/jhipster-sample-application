@@ -1,0 +1,65 @@
+{
+  "name": "Category",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "sortOrder",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateAdded",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateModified",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CategoryStatus",
+      "fieldValues": "AVAIBLE,RESTRICTED,DISABLED"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "category",
+      "relationshipName": "product"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "category",
+      "relationshipName": "subCategory"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "subCategory",
+      "relationshipName": "category",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200521083901",
+  "entityTableName": "category",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
