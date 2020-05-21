@@ -1,0 +1,77 @@
+
+enum CategoryStatus {
+    AVAIBLE, RESTRICTED, DISABLED
+}
+
+entity Category {
+   name String,
+   description String required,
+   sortOrder Integer,
+   dateAdded LocalDate,
+   dateModified LocalDate,
+   status CategoryStatus
+   
+}
+
+entity Product{
+  title String required,
+  keywords String,
+  description String,
+  rating Integer,
+  dateAdded LocalDate,
+  dateModified LocalDate
+}
+
+entity Customer {
+  firstName String,
+  lastName String,
+  email String,
+  telephone String
+}
+
+entity Address {
+  address1 String,
+  address2 String,
+  city String,
+  postcode String,
+  country String
+}
+
+entity WishList {
+  title String,
+  restricted Boolean
+}
+
+
+relationship OneToMany {
+	Customer{address} to Address
+}
+
+relationship OneToMany {
+	Customer{wishList} to WishList
+}
+
+relationship OneToMany {
+	WishList{product} to Product
+}
+
+relationship ManyToMany {
+	Category{product} to Product
+}
+
+relationship OneToMany {
+	Category{subCategory} to Category
+}
+
+// Set pagination options
+paginate Category with infinite-scroll
+paginate Product with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
